@@ -1,0 +1,65 @@
+import java.util.Scanner;
+/* I'm not sure if I'm supposed to separate the states into different files
+ * to implement Rover, so I used if statements instead. Using only this file to have the user's control of the rover
+ * (this question came up too late to ask for clarity, my apologies)
+ */
+public class Rover {
+	public static void main(String[]args) {
+		System.out.println("Start Rover? 1 for Yes, 2 for No : ");
+		//reading user input for Rover initial state
+		Scanner scan = new Scanner(System.in);
+		int user=scan.nextInt();
+		if(user==1) {
+			System.out.println("Rover is Idle");
+		}
+		if(user==2) {
+			System.out.println("Rover will be used another day");
+		}
+		//Explaining to user what their input means
+		System.out.println("Instructions for Rover:");
+		System.out.println("1- Press Right Pedal");
+		System.out.println("2- Hold Right Pedal 5+ seconds");
+		System.out.println("3- Hold Left Pedal 5+ seconds");
+		System.out.println("4- Right Pedal press twice");
+		//In my diagram, this is Entry/Exit: Letting Off Pedal
+		System.out.println("5- Letting Go of any Pedal");
+		//Getting instructions from User
+		int user2=scan.nextInt();
+		while(user2!=5) {
+			if(user2==1) {
+				System.out.println("Rover accelerates forward");
+				//creating another variable for user's input
+				int user3=scan.nextInt();
+				if(user3==2) {
+					System.out.println("Rover maintains constant speed");
+				}//issue when leaving inside if statement, reprints previous if statement
+			}
+			if(user2==2) {
+				System.out.println("Rover maintains a constant speed");
+				int user3=scan.nextInt();
+				if(user3==4) {
+					System.out.println("Rover deaccelerates");
+				}
+				//having issue here, doesn't go out of if statement or while loop after else
+				else {
+					System.out.println("Rover maintains constant speed");
+				}
+			}
+			if(user2==3) {
+				System.out.println("Rover accelerates backwards");
+				int user3=scan.nextInt();
+				if(user3==4) {
+					System.out.println("Rover deaccelerates");
+				}
+			}
+			if(user2==4) {
+				System.out.println("Rover stays Idle");
+				int user3=scan.nextInt();
+				if(user3==1) {
+					System.out.println("Rover accelerates forward");
+				}
+			}
+		}
+		System.out.println("Rover deaccelerates to Idle");
+	}
+}
